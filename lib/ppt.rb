@@ -2,7 +2,7 @@
 
 class Ppt
 
-  
-  attr_reader :humano_tira
+  # Método get de humano_tira, maquina_tirada
+  attr_reader :humano_tirada, :maquina_tirada
   
 end
