@@ -12,3 +12,8 @@ desc " Run tests with --format documentation"
 task :test do
   sh "rspec -Ilib test/ppt_spec.rb --format documentation --color"
 end
+
+desc " Run tests with --format documentation"
+task :html do
+  sh "rspec -Ilib test/ppt_spec.rb --format html --color"
+end
