@@ -6,7 +6,16 @@ class Ppt
   attr_reader :humano_tirada, :maquina_tirada
   
   # Se muestra las tiradas válidas para la simulación del juego
-  @@tiradas_validas = %w[:rock :paper :scissor]
- 
+  @@tiradas_validas = [:rock, :paper, :scissor]
+  
+  class << self
+    
+    def tiradas_validas
+      return @@tiradas_validas
+    end
+    
+  end
   
 end
+
+
