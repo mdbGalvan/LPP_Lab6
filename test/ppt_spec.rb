@@ -1,5 +1,7 @@
+# File : ppt_spec.rb
 
-require "ppt"
+require 'ppt'
+require 'spec_matchers'
 
 describe Ppt do
   before :each do
@@ -33,8 +35,19 @@ describe Ppt do
       @pptClass.tiradas_validas.should include :scissor
     end
   end
+
+  describe "$jugadas_posibles" do
+    it "Debe existir una lista de jugadas posibles y quien gana" do
+      @pptClass.jugadas_posibles.should be_a Hash
+      @pptClass.jugadas_posibles.should include :rock
+      @pptClass.jugadas_posibles.should include :paper
+      @pptClass.jugadas_posibles.should include :scissor
+      @pptClass.jugadas_posibles.should include :rock => :scissor
+      @pptClass.jugadas_posibles.should include :paper => :rock
+      @pptClass.jugadas_posibles.should include :scissor => :paper
+    end
+  end
   
-  #it "Debe existir una lista de jugadas posibles y quien gana" 
   #it "Se debe invocar al metodo obtener_humano() para recoger la tirada del humano y que esta sea valida" 
   #it "Se debe invocar al metodo obtener_maquina() para recoger la tirada de la maquina y que esta sea valida" 
   #it "Debe existir una lista de resultados de un juego desde el punto de vista de la maquina" 
