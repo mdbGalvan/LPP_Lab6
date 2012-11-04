@@ -15,6 +15,11 @@ class Ppt
     return @humano_tirada = tirada_maquina.to_sym
   end
   
+  # Se obtiene una tirada válida para la máquina
+  def obtener_maquina ()
+    return @maquina_tirada = @@tiradas_validas.sample
+  end
+  
   # Métodos de clases para las variables globales
   class << self
     
