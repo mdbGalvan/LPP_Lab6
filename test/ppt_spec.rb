@@ -6,7 +6,7 @@ require 'spec_matchers'
 describe Ppt do
   
   before :each do
-    @ppt = Ppt.new()
+    @ppt = Ppt.new("paper")
     @pptClass = Ppt
   end
   
@@ -69,25 +69,34 @@ describe Ppt do
     end
   end
   
-  describe "$resultados" do
+  describe "resultado" do
     it "Debe existir una lista de resultados de un juego desde el punto de vista de la maquina" do
       @pptClass.resultados.should be_a Array
       @pptClass.respond_to?("resultados").should be_true
-      @pptClass.resultados.should include "Maquina Gana"
-      @pptClass.resultados.should include "Empatan"
-      @pptClass.resultados.should include "Maquina Pierde"
-      @pptClass.resultados.should_not include "Humano Gana"
+      @pptClass.resultados.should include "maquina gana"
+      @pptClass.resultados.should include "empatan"
+      @pptClass.resultados.should include "maquina pierde"
+      @pptClass.resultados.should_not include "humano gana"
     end
     
     it "Debe existir un resultado para un juego, desde el punto de vista de la maquina" do
        @ppt.respond_to?("resultado").should be_true
+       @ppt.resultado.should_not be_nil
        maquina = @ppt.obtener_maquina()
        humano = @ppt.obtener_humano("rock")
        @pptClass.resultados.should include @ppt.resultado()
     end
   end
 
-    #it "Se debe invocar al metodo jugar() para determinar el ganador" do 
+  describe "#play" do
+    it "Se debe invocar al metodo jugar() para determinar el ganador" do 
+      @ppt.respond_to?("jugar").should be_true
+      @ppt.jugar.should_not be_nil
+      ganador = ["humano", "maquina", "empatan"]
+      ganador.include?(@ppt.jugar).should be_true
+    end
+  end
+  
     #it "Se debe de comprobar que las tiradas de la maquina al ser aleatorias recorren las tres posibilidades" 
     #it "Se debe comprobar que las tiradas de la maquina y del humano no son siempre la misma" 
   
