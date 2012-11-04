@@ -75,9 +75,14 @@ describe Ppt do
       @pptClass.resultados.should include "Maquina Pierde"
       @pptClass.resultados.should_not include "Humano Gana"
     end
+    
+    it "Debe existir un resultado para un juego, desde el punto de vista de la maquina" do
+       @pptClass.respond_to?("resultados").should be_true
+    end
   end
 
-  #it "Debe existir un resultado para un juego, desde el punto de vista de la maquina" 
+
+  
   #it "Se debe invocar al metodo jugar() para determinar el ganador" 
   #it "Se debe de comprobar que las tiradas de la maquina al ser aleatorias recorren las tres posibilidades" 
   #it "Se debe comprobar que las tiradas de la maquina y del humano no son siempre la misma" 

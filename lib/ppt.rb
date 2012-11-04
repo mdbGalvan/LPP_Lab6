@@ -22,9 +22,11 @@ class Ppt
     return @maquina_tirada = @@tiradas_validas.sample
   end
   
-  # Métodos de clases para las variables globales
+  
+  # Métodos de clases 
   class << self
-    
+   
+    # Método get de las variables globales
     def tiradas_validas
       return @@tiradas_validas
     end
