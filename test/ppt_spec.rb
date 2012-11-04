@@ -4,6 +4,7 @@ require 'ppt'
 require 'spec_matchers'
 
 describe Ppt do
+  
   before :each do
     @ppt = Ppt.new()
     @pptClass = Ppt
@@ -47,8 +48,16 @@ describe Ppt do
       @pptClass.jugadas_posibles.should include :scissor => :paper
     end
   end
+
+  describe "#obtener_humano" do
+    it "Se debe invocar al metodo obtener_humano() para recoger la tirada del humano y que esta sea valida" do
+      @ppt.respond_to?("obtener_humano").should be_true
+      lambda{@ppt.obtener_humano("fuego")}.should raise_error RuntimeError
+      lambda{@ppt.obtener_humano("rock", "paper")}.should raise_error StandardError      
+      lambda{@ppt.obtener_humano("")}.should raise_error RuntimeError
+    end
+  end
   
-  #it "Se debe invocar al metodo obtener_humano() para recoger la tirada del humano y que esta sea valida" 
   #it "Se debe invocar al metodo obtener_maquina() para recoger la tirada de la maquina y que esta sea valida" 
   #it "Debe existir una lista de resultados de un juego desde el punto de vista de la maquina" 
   #it "Debe existir un resultado para un juego, desde el punto de vista de la maquina" 
