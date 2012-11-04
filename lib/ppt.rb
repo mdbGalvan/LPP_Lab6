@@ -14,7 +14,7 @@ class Ppt
   
   # Método que usará el constructor de la clase new
   def initialize (tirada_humano)
-    @humano_tirada = self.obtener_humano (tirada_humano)
+    @humano_tirada = self.obtener_humano(tirada_humano)
     @maquina_tirada = self.obtener_maquina
   end
   
