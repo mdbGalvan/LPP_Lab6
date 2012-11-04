@@ -5,6 +5,7 @@ class Ppt
   # Método get de humano_tira, maquina_tirada
   attr_reader :humano_tirada, :maquina_tirada
   
+  # @@ Variables Globales
   # Se muestra las tiradas válidas para la simulación del juego
   @@jugadas_posibles = {:rock => :scissor, :paper => :rock, :scissor => :paper}
   @@tiradas_validas = [:rock, :paper, :scissor]
@@ -12,8 +13,8 @@ class Ppt
   @@resultados = ["maquina gana", "empatan", "maquina pierde"]
   
   # Método que usará el constructor de la clase new
-  def initialize (tirada_maquina)
-    @humano_tirada = self.obtener_humano (tirada_maquina)
+  def initialize (tirada_humano)
+    @humano_tirada = self.obtener_humano (tirada_humano)
     @maquina_tirada = self.obtener_maquina
   end
   
@@ -21,19 +22,19 @@ class Ppt
   def resultado
     result = case self.maquina_tirada
       when self.humano_tirada
-	@@resultados[1]
-      when @@jugadas_posibles[self.humano_tirada]
-	@@resultados[2]
+	Ppt.resultados[1]
+      when Ppt.jugadas_posibles[self.humano_tirada]
+	Ppt.resultados[2]
       else 
-	@@resultados[0]
+	Ppt.resultados[0]
     end
     return result
   end
   
   # Se establece una tirada válida para el humano
-  def obtener_humano (tirada_maquina)
-    raise RuntimeError unless @@tiradas_validas.include? tirada_maquina.to_sym
-    return @humano_tirada = tirada_maquina.to_sym
+  def obtener_humano (tirada_humano)
+    raise RuntimeError unless Ppt.tiradas_validas.include? tirada_humano.to_sym
+    return @humano_tirada = tirada_humano.to_sym
   end
   
   # Se establece una tirada válida para la máquina
@@ -46,7 +47,7 @@ class Ppt
     ganador = case self.maquina_tirada
       when self.humano_tirada
 	"empatan"
-      when @@jugadas_posibles[self.humano_tirada]
+      when Ppt.jugadas_posibles[self.humano_tirada]
 	"humano"
       else 
 	"maquina"
@@ -54,10 +55,11 @@ class Ppt
     return ganador
   end
   
-  # Métodos de clases 
+  # Definimos dentro los métodos de clase
   class << self
    
-    # Método get de las variables globales
+    # Métodos get de las variables globales
+    
     def tiradas_validas
       return @@tiradas_validas
     end

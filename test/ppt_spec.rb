@@ -97,7 +97,16 @@ describe Ppt do
     end
   end
   
-    #it "Se debe de comprobar que las tiradas de la maquina al ser aleatorias recorren las tres posibilidades" 
+  describe "tiradas_aleatorias" do
+    it "Se debe de comprobar que las tiradas de la maquina al ser aleatorias recorren las tres posibilidades" do
+      tirada_maquina = []
+      50.times do
+	tirada_maquina << @ppt.obtener_maquina
+      end
+      tirada_maquina.uniq.size.should == @pptClass.tiradas_validas.size
+    end
+  end
+  
     #it "Se debe comprobar que las tiradas de la maquina y del humano no son siempre la misma" 
   
 end
