@@ -105,9 +105,18 @@ describe Ppt do
       end
       tirada_maquina.uniq.size.should == @pptClass.tiradas_validas.size
     end
-  end
-  
-    #it "Se debe comprobar que las tiradas de la maquina y del humano no son siempre la misma" 
+    
+    it "Se debe comprobar que las tiradas de la maquina y del humano no son siempre la misma" do
+      tirada_maquina = []
+      50.times do
+	@ppt.obtener_maquina
+	if @ppt.humano_tirada != @ppt.maquina_tirada
+	  tirada_maquina << @ppt.maquina_tirada
+	end
+      end
+      tirada_maquina.uniq.size.should > 0
+    end    
+  end  
   
 end
 
