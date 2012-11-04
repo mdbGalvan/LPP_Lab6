@@ -12,7 +12,7 @@ describe Ppt do
   
   describe "#new" do
     it "PiedraPapelTijeras" do
-      should be_an_instance_of Ppt
+      @ppt.should be_an_instance_of Ppt
     end
   end
     
@@ -31,6 +31,7 @@ describe Ppt do
   describe "$tiradas_validas" do
     it "Debe existir una lista de tiradas validas" do 
       @pptClass.tiradas_validas.should be_a Array
+      @pptClass.respond_to?("tiradas_validas").should be_true
       @pptClass.tiradas_validas.should include :rock
       @pptClass.tiradas_validas.should include :paper
       @pptClass.tiradas_validas.should include :scissor
@@ -41,6 +42,7 @@ describe Ppt do
   describe "$jugadas_posibles" do
     it "Debe existir una lista de jugadas posibles y quien gana" do
       @pptClass.jugadas_posibles.should be_a Hash
+      @pptClass.respond_to?("jugadas_posibles").should be_true
       @pptClass.jugadas_posibles.should include :rock
       @pptClass.jugadas_posibles.should include :paper
       @pptClass.jugadas_posibles.should include :scissor
@@ -70,6 +72,7 @@ describe Ppt do
   describe "$resultados" do
     it "Debe existir una lista de resultados de un juego desde el punto de vista de la maquina" do
       @pptClass.resultados.should be_a Array
+      @pptClass.respond_to?("resultados").should be_true
       @pptClass.resultados.should include "Maquina Gana"
       @pptClass.resultados.should include "Empatan"
       @pptClass.resultados.should include "Maquina Pierde"
@@ -77,15 +80,16 @@ describe Ppt do
     end
     
     it "Debe existir un resultado para un juego, desde el punto de vista de la maquina" do
-       @pptClass.respond_to?("resultados").should be_true
+       @ppt.respond_to?("resultado").should be_true
+       maquina = @ppt.obtener_maquina()
+       humano = @ppt.obtener_humano("rock")
+       @pptClass.resultados.should include @ppt.resultado()
     end
   end
 
-
-  
-  #it "Se debe invocar al metodo jugar() para determinar el ganador" 
-  #it "Se debe de comprobar que las tiradas de la maquina al ser aleatorias recorren las tres posibilidades" 
-  #it "Se debe comprobar que las tiradas de la maquina y del humano no son siempre la misma" 
+    #it "Se debe invocar al metodo jugar() para determinar el ganador" do 
+    #it "Se debe de comprobar que las tiradas de la maquina al ser aleatorias recorren las tres posibilidades" 
+    #it "Se debe comprobar que las tiradas de la maquina y del humano no son siempre la misma" 
   
 end
 

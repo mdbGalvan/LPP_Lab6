@@ -11,17 +11,29 @@ class Ppt
   # Lista de resultados desde el punto de vista de la máquina
   @@resultados = ["Maquina Gana", "Empatan", "Maquina Pierde"]
   
-  # Se obtiene una tirada válida para el humano
+  # Devuelve el resultado del juego desde el punto de vista de la máquina
+  def resultado
+    result = case self.maquina_tirada
+      when @humano_tirada
+	@@resultados[1]
+      when @@jugadas_posibles[@humano_tirada]
+	@@resultados[2]
+      else 
+	@@resultados[0]
+    end
+    return result
+  end
+  
+  # Se establece una tirada válida para el humano
   def obtener_humano (tirada_maquina)
     raise RuntimeError unless @@tiradas_validas.include? tirada_maquina.to_sym
     return @humano_tirada = tirada_maquina.to_sym
   end
   
-  # Se obtiene una tirada válida para la máquina
+  # Se establece una tirada válida para la máquina
   def obtener_maquina ()
     return @maquina_tirada = @@tiradas_validas.sample
   end
-  
   
   # Métodos de clases 
   class << self
@@ -39,9 +51,8 @@ class Ppt
       return @@resultados
     end
     
-  end
+  end # End Class
   
 end
-
 
 
