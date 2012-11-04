@@ -8,6 +8,8 @@ class Ppt
   # Se muestra las tiradas válidas para la simulación del juego
   @@jugadas_posibles = {:rock => :scissor, :paper => :rock, :scissor => :paper}
   @@tiradas_validas = [:rock, :paper, :scissor]
+  # Lista de resultados desde el punto de vista de la máquina
+  @@resultados = ["Maquina Gana", "Empatan", "Maquina Pierde"]
   
   # Se obtiene una tirada válida para el humano
   def obtener_humano (tirada_maquina)
@@ -29,6 +31,10 @@ class Ppt
     
     def jugadas_posibles
       return @@jugadas_posibles
+    end
+    
+    def resultados
+      return @@resultados
     end
     
   end

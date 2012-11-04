@@ -34,6 +34,7 @@ describe Ppt do
       @pptClass.tiradas_validas.should include :rock
       @pptClass.tiradas_validas.should include :paper
       @pptClass.tiradas_validas.should include :scissor
+      @pptClass.tiradas_validas.should_not include :tijera
     end
   end
 
@@ -66,7 +67,16 @@ describe Ppt do
     end
   end
   
-  #it "Debe existir una lista de resultados de un juego desde el punto de vista de la maquina" 
+  describe "$resultados" do
+    it "Debe existir una lista de resultados de un juego desde el punto de vista de la maquina" do
+      @pptClass.resultados.should be_a Array
+      @pptClass.resultados.should include "Maquina Gana"
+      @pptClass.resultados.should include "Empatan"
+      @pptClass.resultados.should include "Maquina Pierde"
+      @pptClass.resultados.should_not include "Humano Gana"
+    end
+  end
+
   #it "Debe existir un resultado para un juego, desde el punto de vista de la maquina" 
   #it "Se debe invocar al metodo jugar() para determinar el ganador" 
   #it "Se debe de comprobar que las tiradas de la maquina al ser aleatorias recorren las tres posibilidades" 
