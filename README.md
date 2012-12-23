@@ -11,7 +11,7 @@
 
 >Considere el desarrollo de una clase Ruby para representar el juego de Piedra-Papel-Tijeras. Empiece desde cero, no reciclando código de las prácticas anteriores. La clave de esta práctica está en diseñar pruebas que dirijan el desarrollo y si reutiliza el desarrollo anterior estará haciéndolo mal.  
 
->* Cree una Clase PiedraPapelTijeras usando **Desarrollo Dirigido por el Comportamiento** (`Behavior Driven Development - BDD) como caso particular del **Desarrollo dirigido por pruebas** (`Test Driven Development` - TDD) usando como herramienta Rspec.  
+>* Cree una Clase PiedraPapelTijeras usando **Desarrollo Dirigido por el Comportamiento** (`Behavior Driven Development` - BDD) como caso particular del **Desarrollo dirigido por pruebas** (`Test Driven Development` - TDD) usando como herramienta Rspec.  
 Puede tomar como ejemplo la siguiente salida:  
 
 >>`rspec -Ilib test/ppt_spec.rb --format documentation`  
@@ -35,4 +35,4 @@ Puede tomar como ejemplo la siguiente salida:
 `rake bin   # Run bin/ppt_main.rb`  
 `rake test  # Run tests with --format documentation`  
 `rake thtml # Run tests with format: html`  
-*  Indique la URL del repositorio github o bitbucket que ha desarrollado. 
+*  Indique la URL del repositorio github o bitbucket que ha desarrollado.  
