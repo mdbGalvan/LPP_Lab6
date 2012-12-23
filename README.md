@@ -36,3 +36,7 @@ Puede tomar como ejemplo la siguiente salida:
 `rake test  # Run tests with --format documentation`  
 `rake thtml # Run tests with format: html`  
 *  Indique la URL del repositorio github o bitbucket que ha desarrollado.  
+~~~  
+Probando  
+~~~  
+*  No se
